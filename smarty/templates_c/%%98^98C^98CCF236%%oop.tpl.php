@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2016-06-25 13:17:51
+<?php /* Smarty version 2.6.28, created on 2016-06-30 16:29:46
          compiled from oop.tpl */ ?>
 <!DOCTYPE HTML>
 <html>
@@ -19,7 +19,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="./main.js?7"></script>
+<script src="./main.js?9"></script>
 
 
 
@@ -29,7 +29,12 @@
 
     
 
-    <div id='container'></div>
+    <div id='container' class="alert alert-info alert-dismissible" style="display: none" role="alert">
+        <button type="button" class="btn btn-info btn-sm" style="float: right;" 
+                onclick="$('#container').hide(); return false;">
+      <span aria-hidden="true">&times;</span></button>
+        <div id='container-info'></div>
+</div>
     
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => 'table.tpl.html', 'smarty_include_vars' => array()));
@@ -41,7 +46,7 @@ unset($_smarty_tpl_vars);
 
 
 
-<form  class="form-horizontal" role="form" method="post">
+<form  id='form' class="form-horizontal" role="form" method="post">
     
     
 <div class="row">
@@ -300,7 +305,11 @@ class="vas-submit-input">
         <?php endif; ?>
         
         </div>
-</div></div>
+    </div>  <!--buttons-->
+
+
+
+</div>
 </form>
 
 
@@ -333,4 +342,4 @@ class="vas-submit-input">
      
      </body>
     </html>
-    
+    

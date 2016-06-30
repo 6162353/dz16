@@ -456,8 +456,14 @@ class AdsStore {
     
     public function is_last_ad() {
         
-        echo var_dump($this->ads); 
+        //echo var_dump($this->ads); 
+        if (count($this->ads)==1) {
+            
+            return 1;
+            
+        }
         
+        else return 0;
         
     }
 

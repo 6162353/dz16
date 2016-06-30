@@ -252,9 +252,15 @@ if (isset($_GET["id"])) {
     if (isset($_GET["del"])) {
 
         $main->delete_ad($_GET["id"]);
-        echo "Tovar ".$_GET['id']." udalen uspeshno";
         
-        $main->is_last_ad();
+        $result['status']='success';
+        $result['message']="Tovar ".$_GET['id']." udalen uspeshno";
+        $result['is_last_ad']=$main->is_last_ad();
+        $result['data']=$data;
+      
+        echo json_encode($result);
+        
+        
         
 
 
@@ -282,6 +288,9 @@ if (isset($_GET["id"])) {
     }
     $main->getAllAdsFromDb();
     $main->writeOutAll();
+    
+    $result['POST']=$_POST;
+    echo json_encode($result);
 }
 
 function getCity() {

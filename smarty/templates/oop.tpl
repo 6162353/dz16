@@ -17,7 +17,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="./main.js?7"></script>
+<script src="./main.js?9"></script>
 
 
 
@@ -27,7 +27,12 @@
 
     
 
-    <div id='container'></div>
+    <div id='container' class="alert alert-info alert-dismissible" style="display: none" role="alert">
+        <button type="button" class="btn btn-info btn-sm" style="float: right;" 
+                onclick="$('#container').hide(); return false;">
+      <span aria-hidden="true">&times;</span></button>
+        <div id='container-info'></div>
+</div>
     
 {include file='table.tpl.html'}
 
@@ -35,7 +40,7 @@
 
 
 
-<form  class="form-horizontal" role="form" method="post">
+<form  id='form' class="form-horizontal" role="form" method="post">
     
     
 <div class="row">
@@ -267,7 +272,11 @@ class="vas-submit-input">
         {/if}
         
         </div>
-</div></div>
+    </div>  <!--buttons-->
+
+
+
+</div>
 </form>
 
 

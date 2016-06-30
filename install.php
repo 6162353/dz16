@@ -190,7 +190,7 @@ if (count($_POST)) {
             
         
         //echo 'Дамп восстановлен. <a href="./'. $current_php_script . '"visit page</a>';
-        echo 'Дамп восстановлен. <a href="./dz15.php">visit page</a>';
+        echo 'Дамп восстановлен. <a href="./'.$current_php_script.'">visit page</a>';
 
 
         mysqli_close($conn);
