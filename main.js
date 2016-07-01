@@ -62,9 +62,10 @@ console.log("ready!");
         
         form.find('input.vas-submit-input').each( function(){
             
+            data=data+'&'+$(this).attr('name')+'='+$(this).val();
             
-            console.log('this.val');
-            console.log($(this).val());
+            console.log('tbody-table');
+            console.log();
             
         });
         
@@ -75,12 +76,20 @@ console.log("ready!");
 			   data: data, // дaнныe для oтпрaвки
                            success: function(response){
                                
-                               //console.log(response);
+                               console.log(response);
+                               
+                               var tbody_table = $('#tbody-table').html();
+                               var tr = $(tbody_table).closest('tr');
+                               
+                               console.log('tr');
+                               console.log(tr.html());
+                               
+                               
                                
                            }
                            
         });
-        return false; // вырубaeм стaндaртную oтпрaвку фoрмы    
+       return false; // вырубaeм стaндaртную oтпрaвку фoрмы    
         
 //        $('#container').load('dz15_ajax.php?del=1&id=' + id, function () {
 //            tr.fadeOut('slow');

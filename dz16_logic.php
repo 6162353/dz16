@@ -282,15 +282,20 @@ if (isset($_GET["id"])) {
             $ad = new BasicAd($_POST);
 
 
-            $ad->save();
+            
+            
+            
+            $result['id'] = $ad->save();
+            
+            echo json_encode($result);
             //var_dump($ad);
         }
     }
-    $main->getAllAdsFromDb();
-    $main->writeOutAll();
+    //$main->getAllAdsFromDb();
+    //$main->writeOutAll();
     
-    $result['POST']=$_POST;
-    echo json_encode($result);
+    //$result['id']=$_POST[];
+    
 }
 
 function getCity() {
