@@ -232,14 +232,18 @@ if ($_POST['form'] == "Сохранить объявление") {
     //$temp_array = $Ads1->change_ad($db, $_POST, $_GET["id"]);
     //$firePHP->log($temp_array, 'ads $temp_array');
 
+    $result['state'] = 'save ad';
     $main->change_Ad($_GET['id']);
 
     //var_dump($_GET);
+    echo json_encode($result);
     header('Location:./'.$current_php_script);
 }
 
 if ($_POST['form'] == "Назад") {
 
+    $result['state'] = 'back';
+    echo json_encode($result);
     header('Location:./'.$current_php_script);
 }
 
@@ -270,11 +274,14 @@ if (isset($_GET["id"])) {
 
     if (isset($_GET["edit"])) {
 
-
+        $result['state']='edit ad';
         $main->writeOutOne($_GET['id']);
         //$post_edit = 1;
         //$ad->edit($_GET['id']);
+        
+        echo json_encode($result);
     }
+    
 } elseif (count($_POST)) {
     if (isset($_POST['main_form'])) {
         if ($_POST['main_form'] == 'Добавить') {
@@ -283,7 +290,7 @@ if (isset($_GET["id"])) {
 
 
                      
-            
+            $result['state'] = 'add ad';
             $result['id'] = $ad->save();
             $result['title'] = $_POST['title'];
             $result['description'] = $_POST['description'];

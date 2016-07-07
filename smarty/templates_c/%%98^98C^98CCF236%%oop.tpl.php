@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2016-07-04 19:25:19
+<?php /* Smarty version 2.6.28, created on 2016-07-07 20:42:21
          compiled from oop.tpl */ ?>
 <!DOCTYPE HTML>
 <html>
@@ -289,16 +289,17 @@ name="price" id="fld_price">&nbsp;<span id="fld_price_title">руб.</span>
             <?php if ($this->_tpl_vars['post_edit']): ?>
 <div class="row">                
 <div class="col-md-8">
-<input type="submit" value="Сохранить объявление" id="form_submit" name="form" 
+<input type="submit" value="Сохранить объявление" id="btn_save_ad" name="form" 
 class="vas-submit-input">
             </div>
+    
  <div class="col-md-4">               
-<input type="submit" value="Назад" id="form_submit" name="form" class="vas-submit-input">
+<input type="submit" value="Назад" id="form_submit" name="btn_back" class="vas-submit-input">
 </div>
 </div>
 <?php else: ?>
 
-    <input type="submit" value="Добавить" id="form_submit" name="main_form" 
+    <input type="submit" value="Добавить" id="btn_add_ad" name="main_form" 
         class="vas-submit-input">
         
 
