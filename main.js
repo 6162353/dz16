@@ -77,12 +77,37 @@ console.log("ready!");
                            success: function(response){
                                
                                console.log(response);
-                               
+                             
                                var tbody_table = $('#tbody-table').html();
-                               var tr = $(tbody_table).closest('tr');
+                               var new_tr = '';
                                
                                console.log('tr');
-                               console.log(tr.html());
+                               console.log(new_tr);
+                               
+                               new_tr='<tr><td>'+response['id']+'</td>'+
+                                       '<td>'+response['title']+'</td>'+
+                                        '<td>'+response['description']+'</td>'+
+                                         '<td>'+response['price']+'</td>'+
+                                '<td><a data-toggle="tooltip" title="Редактировать объявление"'+
+                'href=./dz16.php?edit=1&id='+response['id']+"><span class='glyphicon glyphicon-edit'></span></a>"+
+              "<a class='delete' data-toggle='tooltip' title='Удалить объявление'>"
+              +"<span class='btn glyphicon glyphicon-remove-circle'></span></a></td></tr>";         
+
+                                                             
+//                               console.log('a attr href');
+//                               console.log(a_href);
+                               
+                               console.log('tr');
+                               console.log(new_tr);
+                               
+                               $('#tbody-table').html(tbody_table+new_tr);
+                               ;
+                               
+                               
+                               console.log('tbody after append ');
+                               console.log($('#tbody-table').html());
+                               
+                               
                                
                                
                                

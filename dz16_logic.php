@@ -282,10 +282,12 @@ if (isset($_GET["id"])) {
             $ad = new BasicAd($_POST);
 
 
-            
-            
+                     
             
             $result['id'] = $ad->save();
+            $result['title'] = $_POST['title'];
+            $result['description'] = $_POST['description'];
+            $result['price'] = $_POST['price'];
             
             echo json_encode($result);
             //var_dump($ad);

@@ -209,9 +209,8 @@ class BasicAd {
         global $db;
         $vars = get_object_vars($this);
         //var_dump($this);
-        $db->query('INSERT INTO ads(?#) VALUES(?a)', array_keys($vars), array_values($vars));
+        return $db->query('INSERT INTO ads(?#) VALUES(?a)', array_keys($vars), array_values($vars));
         
-        return $db->insert_id;
         
     }
     
