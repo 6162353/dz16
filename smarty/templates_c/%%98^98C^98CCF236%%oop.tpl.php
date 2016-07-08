@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2016-07-07 20:42:21
+<?php /* Smarty version 2.6.28, created on 2016-07-08 18:19:07
          compiled from oop.tpl */ ?>
 <!DOCTYPE HTML>
 <html>
@@ -53,13 +53,13 @@ unset($_smarty_tpl_vars);
     <div class="col-md-6">
 <label >
    
-<input type="radio" <?php echo $this->_tpl_vars['checkedPrivate']; ?>
+<input id='private' type="radio" class="private" <?php echo $this->_tpl_vars['checkedPrivate']; ?>
  value='1' name="private">Частное лицо
 
 </label> 
     <label >
         
-<input type="radio" <?php echo $this->_tpl_vars['checkedCompany']; ?>
+<input id='company' type="radio" class="private" <?php echo $this->_tpl_vars['checkedCompany']; ?>
  value='0' name="private">Компания</label> </div>
     </div>
 

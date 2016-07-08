@@ -4,9 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Z:/home/localhost/www/dz16/Ad.class.php</file>
-            <file>file:/Z:/home/localhost/www/dz16/dz16.php</file>
+            <file>file:/Z:/home/localhost/www/dz16/db-test.php</file>
+            <file>file:/Z:/home/localhost/www/dz16/smarty/templates/table_row.tpl.html</file>
+            <file>file:/Z:/home/localhost/www/dz16/smarty/templates/oop.tpl</file>
+            <file>file:/Z:/home/localhost/www/dz16/dz16_ajax.php</file>
             <file>file:/Z:/home/localhost/www/dz16/dz16_logic.php</file>
             <file>file:/Z:/home/localhost/www/dz16/main.js</file>
+            <file>file:/Z:/home/localhost/www/dz16/functions.php</file>
         </group>
     </open-files>
 </project-private>

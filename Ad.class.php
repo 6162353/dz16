@@ -394,6 +394,22 @@ class AdsStore {
                 
                 
     }
+    
+     public function getValues_of_ad($id) {
+        
+        foreach ($this->ads as $value) {
+
+            //var_dump($value->getValues());
+            //var_dump(get_object_vars($value));
+            if ($value->getId() == $id) {
+                
+                return $value->getValues();
+            }
+    
+        }
+                
+                
+    }
         
     public function change_ad($id) {
         

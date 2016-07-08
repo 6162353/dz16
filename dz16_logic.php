@@ -275,9 +275,12 @@ if (isset($_GET["id"])) {
     if (isset($_GET["edit"])) {
 
         $result['state']='edit ad';
-        $main->writeOutOne($_GET['id']);
+        $result['values']=$main->getValues_of_ad($_GET['id']);
         //$post_edit = 1;
         //$ad->edit($_GET['id']);
+        
+        
+        
         
         echo json_encode($result);
     }

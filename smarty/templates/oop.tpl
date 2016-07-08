@@ -47,12 +47,12 @@
     <div class="col-md-6">
 <label >
    
-<input type="radio" {$checkedPrivate} value='1' name="private">Частное лицо
+<input id='private' type="radio" class="private" {$checkedPrivate} value='1' name="private">Частное лицо
 
 </label> 
     <label >
         
-<input type="radio" {$checkedCompany} value='0' name="private">Компания</label> </div>
+<input id='company' type="radio" class="private" {$checkedCompany} value='0' name="private">Компания</label> </div>
     </div>
 
 <!-- ИМЯ -->

@@ -71,6 +71,44 @@ $(document).ready(function () {
         $.getJSON('dz16_ajax.php?edit=1', data, function (response) {
 
             console.log(response);
+            
+//                console.log('#btn_add_ad.length');
+//                console.log($('#btn_add_ad').length);
+            // подгрузка значений объявления в форму
+
+            if (response['values']['private'] == '1') {
+
+                $('input.private:first').removeAttr('checked');
+                $('input.private:last').attr('checked','');
+                
+                                    
+                } else {
+                    
+                $('input.private:last').removeAttr('checked');
+                $('input.private:first').attr('checked','');   
+                    
+                    
+                }
+            
+            $('#fld_price').val(response['values']['price']);
+            $('#fld_description').val(response['values']['descr']);
+            $('#fld_title').val(response['values']['title']);
+            $('#fld_email').val(response['values']['email']);
+            $('#fld_seller_name').val(response['values']['user_name']);
+            $('#fld_phone').val(response['values']['tel']);
+            
+            $('#fld_prone').val(response['values']['tel']);
+            
+                
+                
+            
+                   
+            // смена кнопок
+            
+            if ($('#btn_add_ad').length) {
+                
+
+                
             $('#btn_add_ad').remove();
             
             btns = '<div class="row">' +                
@@ -79,15 +117,15 @@ $(document).ready(function () {
             'id="btn_save_ad" name="form" class="vas-submit-input">' +
             '</div>' +
             '<div class="col-md-4">' +               
-            '<input type="submit" value="Назад" id="form_submit" ' +
-            'name="btn_back" class="vas-submit-input">' +
+            '<input type="submit" value="Назад" id="btn_back" ' +
+            'name="form" class="vas-submit-input">' +
             '</div>' +
             '</div>';
             
             
-            $('body').append(btns);
+            $('#form').append(btns);
             
-            
+            };
             
             
             
@@ -105,15 +143,17 @@ $(document).ready(function () {
 
 
     });
+    
 
 
+    
+
+});
 
 
+$(document).on('click','#btn_add_ad', function () {
 
-
-    $("#form").submit(function () {
-
-        var form = $(this);
+        var form = $('#form');
         var data = form.serialize();
 
         form.find('input.vas-submit-input').each(function () {
@@ -131,14 +171,22 @@ $(document).ready(function () {
             dataType: 'json', // oтвeт ждeм в json фoрмaтe
             data: data, // дaнныe для oтпрaвки
             success: function (response) {
+                
+                                // обнуляем значения формы
+                
+                $('#form').trigger('reset');
+                
+                     
+                
+                ;
 
                 console.log(response);
 
                 var tbody_table = $('#tbody-table').html();
                 var new_tr = '';
 
-                console.log('tr');
-                console.log(new_tr);
+//                console.log('tr');
+//                console.log(new_tr);
 
                 new_tr = '<tr><td>' + response['id'] + '</td>' +
                         '<td>' + response['title'] + '</td>' +
@@ -153,16 +201,19 @@ $(document).ready(function () {
 //                               console.log('a attr href');
 //                               console.log(a_href);
 
-                console.log('tr');
-                console.log(new_tr);
+//                console.log('tr');
+//                console.log(new_tr);
 
                 $('#tbody-table').html(tbody_table + new_tr);
                 ;
 
 
-                console.log('tbody after append ');
-                console.log($('#tbody-table').html());
+//                console.log('tbody after append ');
+//                console.log($('#tbody-table').html());
+                
 
+
+                
 
 
 
@@ -170,17 +221,54 @@ $(document).ready(function () {
             }
 
         });
+        
+
+        
+        
         return false; // вырубaeм стaндaртную oтпрaвку фoрмы    
 
-//        $('#container').load('dz15_ajax.php?del=1&id=' + id, function () {
-//            tr.fadeOut('slow');
-//            });
-//        }
-//
-//        );
+        // обнуляем значения формы
+
+        
+        
+        
 
     });
 
-});
+$(document).on('click','#btn_back', function () {
 
+
+        // обнуление значений
+        
+        $('#form').trigger('reset');
+        
+        // удаление кнопок, появление кнопки - Добавить объявление
+
+            console.log('btn_back');
+            $('#btn_save_ad').remove();
+            $('#btn_back').remove();
+            
+            btn_add_ad = '<input type="submit" value="Добавить" id="btn_add_ad" name="main_form"'+ 
+        'class="vas-submit-input">';
+            
+            
+            $('#form').append(btn_add_ad);
+
+    });
+    
+$(document).on('click','#private', function () {
+
+
+                $('#private').attr('checked','');
+                $('#company').removeAttr('checked');
+
+    });
+    
+$(document).on('click','#company', function () {
+
+
+                $('#company').attr('checked','');
+                $('#private').removeAttr('checked');
+
+    });
 
