@@ -17,7 +17,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="./main.js?12"></script>
+<script src="./main.js?15"></script>
 
 
 
@@ -256,7 +256,7 @@ name="price" id="fld_price">&nbsp;<span id="fld_price_title">руб.</span>
             {if $post_edit}
 <div class="row">                
 <div class="col-md-8">
-<input type="submit" value="Сохранить объявление" id="btn_save_ad" name="form" 
+<input type="submit" value="Сохранить_объявление" id="btn_save_ad" name="form" 
 class="vas-submit-input">
             </div>
     

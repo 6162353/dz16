@@ -18,6 +18,8 @@
  console.log(xhr);
  */
 
+var edit_id = '';
+
 
 $(document).ready(function () {
 
@@ -54,6 +56,8 @@ $(document).ready(function () {
 
 
     });
+    
+    // редактирование объявления
 
     $('#ads-table').on('click', '.glyphicon-edit', function () {
 
@@ -67,6 +71,7 @@ $(document).ready(function () {
         //alert('Load was performed.');
 
         var data = {'id': id};
+        edit_id = id;
 
         $.getJSON('dz16_ajax.php?edit=1', data, function (response) {
 
@@ -129,7 +134,7 @@ $(document).ready(function () {
 
                 btns = '<div class="row">' +
                         '<div class="col-md-8">' +
-                        '<input type="submit" value="Сохранить объявление"' +
+                        '<input type="submit" value="Сохранить_объявление"' +
                         'id="btn_save_ad" name="form" class="vas-submit-input">' +
                         '</div>' +
                         '<div class="col-md-4">' +
@@ -167,6 +172,8 @@ $(document).ready(function () {
 
 });
 
+        // add add
+
 
 $(document).on('click', '#btn_add_ad', function () {
 
@@ -177,8 +184,8 @@ $(document).on('click', '#btn_add_ad', function () {
 
         data = data + '&' + $(this).attr('name') + '=' + $(this).val();
 
-        console.log('tbody-table');
-        console.log();
+        console.log('data');
+        console.log(data);
 
     });
 
@@ -198,7 +205,7 @@ $(document).on('click', '#btn_add_ad', function () {
 
 
             
-
+            console.log('response');
             console.log(response);
 
             var tbody_table = $('#tbody-table').html();
@@ -277,4 +284,73 @@ $(document).on('click', '#btn_back', function () {
     $('#form').append(btn_add_ad);
 
 });
+
+$(document).on('click', '#btn_save_ad', function () {
+
+    
+
+    // передаем значения формы
+    
+    var form = $('#form');
+    var data = form.serialize();
+
+    data = data + '&' + $('#btn_save_ad').attr('name') +
+            '=' + $('#btn_save_ad').val() +'&id=' + edit_id;
+
+    console.log('data');
+    console.log(data);
+        
+
+    
+
+    $.ajax({// инициaлизируeм ajax зaпрoс
+        type: 'POST', // oтпрaвляeм в POST фoрмaтe, мoжнo GET
+        url: 'dz16_ajax.php', // путь дo oбрaбoтчикa, у нaс oн лeжит в тoй жe пaпкe
+        dataType: 'json', // oтвeт ждeм в json фoрмaтe
+        data: data, // дaнныe для oтпрaвки
+        success: function (response) {
+
+          
+            console.log('response');
+            console.log(response);
+
+            $('tr').each( function () {
+                
+                console.log('each tr');
+                
+                
+                if ( $(this).find('td:first').html() == edit_id ) {
+                    
+                    //если ид совпадает, то меняем значения строки
+                    
+//                    console.log('td:nth-child(2)');
+//                    
+//                    console.log($(this).find('td:nth-child(2)'));
+                    
+                    $(this).find('td:nth-child(2)').html(response['title']);
+                    $(this).find('td:nth-child(3)').html(response['description']);
+                    $(this).find('td:nth-child(4)').html(response['price']);
+                    
+                }
+                
+                
+            });
+
+
+//                console.log('tr');
+//                console.log(new_tr);
+        
+        
+        }
+        
+      
+
+    });
+    
+    return false;  
+    
+
+});
+
+
 

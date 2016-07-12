@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2016-07-11 16:11:31
+<?php /* Smarty version 2.6.28, created on 2016-07-12 16:42:14
          compiled from oop.tpl */ ?>
 <!DOCTYPE HTML>
 <html>
@@ -19,7 +19,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="./main.js?12"></script>
+<script src="./main.js?15"></script>
 
 
 
@@ -289,7 +289,7 @@ name="price" id="fld_price">&nbsp;<span id="fld_price_title">руб.</span>
             <?php if ($this->_tpl_vars['post_edit']): ?>
 <div class="row">                
 <div class="col-md-8">
-<input type="submit" value="Сохранить объявление" id="btn_save_ad" name="form" 
+<input type="submit" value="Сохранить_объявление" id="btn_save_ad" name="form" 
 class="vas-submit-input">
             </div>
     
@@ -343,4 +343,4 @@ class="vas-submit-input">
      
      </body>
     </html>
-    
+    

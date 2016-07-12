@@ -226,25 +226,34 @@ $main->writeOutAll();
 
 
 
-if ($_POST['form'] == "Сохранить объявление") {
+if ($_POST['form'] == "Сохранить_объявление") {
 // сохранить элемент
 // записать изменение в базу
     //$temp_array = $Ads1->change_ad($db, $_POST, $_GET["id"]);
     //$firePHP->log($temp_array, 'ads $temp_array');
 
     $result['state'] = 'save ad';
-    $main->change_Ad($_GET['id']);
-
+    $result['POST']=$_POST;
+    $main->change_Ad($_POST['id']);
+    
+    $result['title'] = $_POST['title'];
+    $result['description'] = $_POST['description'];
+    $result['price'] = $_POST['price'];
+    
+    
+    
     //var_dump($_GET);
     echo json_encode($result);
-    header('Location:./'.$current_php_script);
+    
+    //header('Location:./'.$current_php_script);
 }
 
 if ($_POST['form'] == "Назад") {
 
     $result['state'] = 'back';
     echo json_encode($result);
-    header('Location:./'.$current_php_script);
+    
+    //header('Location:./'.$current_php_script);
 }
 
 
@@ -309,6 +318,11 @@ if (isset($_GET["id"])) {
     //$result['id']=$_POST[];
     
 }
+
+//$result['state']='end of script';
+//$result['POST']=$_POST;
+//echo json_encode($result);
+
 
 function getCity() {
 
