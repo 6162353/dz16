@@ -298,6 +298,12 @@ if (isset($_GET["id"])) {
     if (isset($_POST['main_form'])) {
         if ($_POST['main_form'] == 'Добавить') {
 
+            foreach ( $_POST as $arr_el ) {
+                
+                $arr_el = strip_tags($arr_el);
+                
+            }
+            
             $ad = new BasicAd($_POST);
 
 

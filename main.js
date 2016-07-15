@@ -25,6 +25,19 @@ $(document).ready(function () {
 
     console.log("ready!");
     //$('h2').css('color', 'red');
+    
+    
+    
+    $('#fld_price').keypress(function(key) {
+
+    console.log(key.charCode);
+
+if ((key.charCode > 0 && key.charCode < 48) || key.charCode > 59  ) return false;
+
+});
+    
+    
+    
 
     $('#ads-table').on('click', '.glyphicon-remove-circle', function () {
 
@@ -178,7 +191,89 @@ $(document).ready(function () {
 $(document).on('click', '#btn_add_ad', function () {
 
     var form = $('#form');
+    
+    console.log('form');
+    console.log(form);
+    
+    // обработка значений формы
+    
+    regexp = /<((\w)*|(\s)*|[\-\.=,\?\@\!\"\'\*\#№\$;\%\^:&\(\)_+\/\\\|\}\{\~\`]*)*>/gi;
+    var fld_seller_name;
+        fld_seller_name = $('#fld_seller_name').val().replace(regexp,"")
+    
+    console.log('fld_seller_name');
+    console.log(fld_seller_name);
+    
+    $('#fld_seller_name').val(fld_seller_name);
+    
+        var fld_description;
+        fld_description = $('#fld_description').val().replace(regexp,"")
+    
+    console.log('fld_description');
+    console.log(fld_description);
+    
+    $('#fld_description').val(fld_description);
+
+        var fld_email;
+        fld_email = $('#fld_email').val().replace(regexp,"")
+    
+    console.log('fld_email');
+    console.log(fld_email);
+    
+    $('#fld_email').val(fld_email);
+    
+            var fld_phone;
+        fld_phone = $('#fld_phone').val().replace(regexp,"")
+    
+    console.log('fld_phone');
+    console.log(fld_phone);
+    
+    $('#fld_phone').val(fld_phone);
+        
+        var fld_title;
+        fld_title = $('#fld_title').val().replace(regexp,"")
+    
+    console.log('fld_title');
+    console.log(fld_title);
+    
+    $('#fld_title').val(fld_title);
+      
+            var fld_price;
+        fld_price = $('#fld_price').val().replace(regexp,"")
+    
+    console.log('fld_price');
+    console.log(fld_price);
+    
+    $('#fld_price').val(fld_price);
+        
+        
+    
+        
+        
+        
+//    str = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">'+
+//'</script><script src="./main.js?16"></script>' +
+//'<body style="width:500px; padding: 30px;">'+
+//'<div id="container" class="alert alert-info alert-dismissible" style="display: none" role="alert">';
+//    
+//    console.log('str');
+//    console.log(str.match(regexp));  
+    
+    
     var data = form.serialize();
+    
+        
+    
+            console.log('data serialize');
+        console.log(data);
+   
+        data2 = data.replace(regexp,"");
+    
+            console.log('data after regexp');
+        console.log(data2);
+        console.log(data.search(regexp));
+        console.log(data.match(regexp));
+    
 
     form.find('input.vas-submit-input').each(function () {
 
@@ -293,7 +388,9 @@ $(document).on('click', '#btn_save_ad', function () {
     
     var form = $('#form');
     var data = form.serialize();
-
+    
+    data.replace(/(<\W*>)+/g,'');
+    
     data = data + '&' + $('#btn_save_ad').attr('name') +
             '=' + $('#btn_save_ad').val() +'&id=' + edit_id;
 
