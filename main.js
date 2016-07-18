@@ -317,7 +317,7 @@ $(document).on('click', '#btn_save_ad', function () {
     var form = $('#form');
     var data = form.serialize();
     
-    var btn_save_ad = $('btn_save_ad');
+    var btn_save_ad = $('#btn_save_ad');
     
     data = data + '&' + btn_save_ad.attr('name') +
             '=' + btn_save_ad.val() +'&id=' + edit_id;
@@ -339,14 +339,15 @@ $(document).on('click', '#btn_save_ad', function () {
             console.log('response');
             console.log(response);
 
-            $('tr').each( function () {
+            $('td').each( function () {
                 
-                console.log('each tr');
+                console.log('each td');
                 
                 
-                if ( $(this).find('td:first').html() == edit_id ) {
+                if ( $(this).html() == edit_id ) {
                     
                     console.log(edit_id);
+                    tr = $(this).closest('tr');
                     //если ид совпадает, то меняем значения строки
                     
 //                    console.log('td:nth-child(2)');
@@ -355,9 +356,9 @@ $(document).on('click', '#btn_save_ad', function () {
 
                     // изменили значения в таблице
                     
-                    $(this).find('td:nth-child(2)').html(response['values']['title']);
-                    $(this).find('td:nth-child(3)').html(response['values']['description']);
-                    $(this).find('td:nth-child(4)').html(response['values']['price']);
+                    tr.find('td:nth-child(2)').html(response['values']['title']);
+                    tr.find('td:nth-child(3)').html(response['values']['description']);
+                    tr.find('td:nth-child(4)').html(response['values']['price']);
                     
                     // перезагружаем измененные input в ходе фильтрации
                     
