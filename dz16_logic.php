@@ -234,14 +234,24 @@ if ($_POST['form'] == "Сохранить_объявление") {
 
     $result['state'] = 'save ad';
     $result['POST']=$_POST;
-    $main->change_Ad($_POST['id']);
     
-    $result['title'] = $_POST['title'];
-    $result['description'] = $_POST['description'];
-    $result['price'] = $_POST['price'];
+        
+            // убирание тегов
+
+    foreach ( $_POST as $key => $value ) {
+
+        $arr[$key] = strip_tags($value);
+
+    }
+
+    $result['POST2'] = $arr;
     
     
     
+    $main->change_Ad($arr);
+    
+    $result['values']=$main->getValues_of_ad($arr['id']);
+
     //var_dump($_GET);
     echo json_encode($result);
     
@@ -283,6 +293,8 @@ if (isset($_GET["id"])) {
 
     if (isset($_GET["edit"])) {
 
+        
+        
         $result['state']='edit ad';
         $result['values']=$main->getValues_of_ad($_GET['id']);
         //$post_edit = 1;
@@ -297,22 +309,29 @@ if (isset($_GET["id"])) {
 } elseif (count($_POST)) {
     if (isset($_POST['main_form'])) {
         if ($_POST['main_form'] == 'Добавить') {
+            
+            $result['POST'] = $_POST;
+            
+            // убирание тегов
 
-            foreach ( $_POST as $arr_el ) {
+            foreach ( $_POST as $key => $value ) {
                 
-                $arr_el = strip_tags($arr_el);
+                $arr[$key] = strip_tags($value);
                 
             }
             
-            $ad = new BasicAd($_POST);
+            $result['POST2'] = $arr;
+            
+            
+            $ad = new BasicAd($arr);
 
 
                      
             $result['state'] = 'add ad';
             $result['id'] = $ad->save();
-            $result['title'] = $_POST['title'];
-            $result['description'] = $_POST['description'];
-            $result['price'] = $_POST['price'];
+            $result['title'] = $arr['title'];
+            $result['description'] = $arr['description'];
+            $result['price'] = $arr['price'];
             
             echo json_encode($result);
             //var_dump($ad);

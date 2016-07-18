@@ -411,30 +411,30 @@ class AdsStore {
                 
     }
         
-    public function change_ad($id) {
+    public function change_ad($arr) {
         
         
              
-        $ad=self::getAd($id);
+        $ad=self::getAd($arr['id']);
         
         // формируем данные объявления vars
         
         
-        $vars['id'] = $id;
-        $vars['title'] = $_POST['title'];
-        $vars['price'] = $_POST['price'];
-        $vars['user_name'] = $_POST['seller_name'];
-        $vars['email'] = $_POST['email'];
-        $vars['tel'] = $_POST['phone'];
-        $vars['descr'] = $_POST['description'];
-        $vars['id_city'] = $_POST['location_id'];
-        $vars['id_tube_station'] = $_POST['metro_id'];
-        $vars['id_subcategory'] = $_POST['category_id'];
-        $vars['private'] = $_POST['private'];
+        $vars['id'] = $arr['id'];
+        $vars['title'] = $arr['title'];
+        $vars['price'] = $arr['price'];
+        $vars['user_name'] = $arr['seller_name'];
+        $vars['email'] = $arr['email'];
+        $vars['tel'] = $arr['phone'];
+        $vars['descr'] = $arr['description'];
+        $vars['id_city'] = $arr['location_id'];
+        $vars['id_tube_station'] = $arr['metro_id'];
+        $vars['id_subcategory'] = $arr['category_id'];
+        $vars['private'] = $arr['private'];
         
-        if (isset($_POST['allow_mails'])) {
+        if (isset($arr['allow_mails'])) {
 
-            $vars['send_to_email'] = $_POST['allow_mails'];
+            $vars['send_to_email'] = $arr['allow_mails'];
         } else {
 
             $vars['send_to_email'] = '0';

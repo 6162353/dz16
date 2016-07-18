@@ -195,86 +195,12 @@ $(document).on('click', '#btn_add_ad', function () {
     console.log('form');
     console.log(form);
     
-    // обработка значений формы
-    
-    regexp = /<((\w)*|(\s)*|[\-\.=,\?\@\!\"\'\*\#№\$;\%\^:&\(\)_+\/\\\|\}\{\~\`]*)*>/gi;
-    var fld_seller_name;
-        fld_seller_name = $('#fld_seller_name').val().replace(regexp,"")
-    
-    console.log('fld_seller_name');
-    console.log(fld_seller_name);
-    
-    $('#fld_seller_name').val(fld_seller_name);
-    
-        var fld_description;
-        fld_description = $('#fld_description').val().replace(regexp,"")
-    
-    console.log('fld_description');
-    console.log(fld_description);
-    
-    $('#fld_description').val(fld_description);
-
-        var fld_email;
-        fld_email = $('#fld_email').val().replace(regexp,"")
-    
-    console.log('fld_email');
-    console.log(fld_email);
-    
-    $('#fld_email').val(fld_email);
-    
-            var fld_phone;
-        fld_phone = $('#fld_phone').val().replace(regexp,"")
-    
-    console.log('fld_phone');
-    console.log(fld_phone);
-    
-    $('#fld_phone').val(fld_phone);
-        
-        var fld_title;
-        fld_title = $('#fld_title').val().replace(regexp,"")
-    
-    console.log('fld_title');
-    console.log(fld_title);
-    
-    $('#fld_title').val(fld_title);
-      
-            var fld_price;
-        fld_price = $('#fld_price').val().replace(regexp,"")
-    
-    console.log('fld_price');
-    console.log(fld_price);
-    
-    $('#fld_price').val(fld_price);
-        
-        
-    
-        
-        
-        
-//    str = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">'+
-//'</script><script src="./main.js?16"></script>' +
-//'<body style="width:500px; padding: 30px;">'+
-//'<div id="container" class="alert alert-info alert-dismissible" style="display: none" role="alert">';
-//    
-//    console.log('str');
-//    console.log(str.match(regexp));  
-    
-    
     var data = form.serialize();
     
-        
+    console.log('data serialize');
+    console.log(data);
+ 
     
-            console.log('data serialize');
-        console.log(data);
-   
-        data2 = data.replace(regexp,"");
-    
-            console.log('data after regexp');
-        console.log(data2);
-        console.log(data.search(regexp));
-        console.log(data.match(regexp));
-    
-
     form.find('input.vas-submit-input').each(function () {
 
         data = data + '&' + $(this).attr('name') + '=' + $(this).val();
@@ -356,12 +282,14 @@ $(document).on('click', '#btn_add_ad', function () {
 
 });
 
+
+
 $(document).on('click', '#btn_back', function () {
 
-
+    var form=$('#form')
     // обнуление значений
 
-    $('#form').trigger('reset');
+    form.trigger('reset');
     $('input.private:last').removeAttr('checked');
     $('input.private:first').prop('checked', true);
     $('#allow_mails').removeAttr('checked');
@@ -376,7 +304,7 @@ $(document).on('click', '#btn_back', function () {
             'class="vas-submit-input">';
 
 
-    $('#form').append(btn_add_ad);
+    form.append(btn_add_ad);
 
 });
 
@@ -389,10 +317,10 @@ $(document).on('click', '#btn_save_ad', function () {
     var form = $('#form');
     var data = form.serialize();
     
-    data.replace(/(<\W*>)+/g,'');
+    var btn_save_ad = $('btn_save_ad');
     
-    data = data + '&' + $('#btn_save_ad').attr('name') +
-            '=' + $('#btn_save_ad').val() +'&id=' + edit_id;
+    data = data + '&' + btn_save_ad.attr('name') +
+            '=' + btn_save_ad.val() +'&id=' + edit_id;
 
     console.log('data');
     console.log(data);
@@ -418,16 +346,29 @@ $(document).on('click', '#btn_save_ad', function () {
                 
                 if ( $(this).find('td:first').html() == edit_id ) {
                     
+                    console.log(edit_id);
                     //если ид совпадает, то меняем значения строки
                     
 //                    console.log('td:nth-child(2)');
 //                    
 //                    console.log($(this).find('td:nth-child(2)'));
+
+                    // изменили значения в таблице
                     
-                    $(this).find('td:nth-child(2)').html(response['title']);
-                    $(this).find('td:nth-child(3)').html(response['description']);
-                    $(this).find('td:nth-child(4)').html(response['price']);
+                    $(this).find('td:nth-child(2)').html(response['values']['title']);
+                    $(this).find('td:nth-child(3)').html(response['values']['description']);
+                    $(this).find('td:nth-child(4)').html(response['values']['price']);
                     
+                    // перезагружаем измененные input в ходе фильтрации
+                    
+
+            $('#fld_price').val(response['values']['price']);
+            $('#fld_description').val(response['values']['descr']);
+            $('#fld_title').val(response['values']['title']);
+            $('#fld_email').val(response['values']['email']);
+            $('#fld_seller_name').val(response['values']['user_name']);
+            $('#fld_phone').val(response['values']['tel']);
+
                 }
                 
                 
