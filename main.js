@@ -32,9 +32,22 @@ $(document).ready(function () {
 
     console.log(key.charCode);
 
-if ((key.charCode > 0 && key.charCode < 48) || key.charCode > 59  ) return false;
+if ((key.charCode > 0 && key.charCode < 48) || (key.charCode > 59 && key.charCode < 98)  
+        || ( key.charCode > 99 && key.charCode < 118 ) || key.charCode > 118) return false;
 
 });
+
+    $('#fld_phone').keypress(function(key) {
+
+    console.log(key.charCode);
+
+if ((key.charCode > 0 && key.charCode < 40) || ( key.charCode > 41 && key.charCode < 45) 
+        || (key.charCode > 45 && key.charCode < 48 ) || (key.charCode > 59 && key.charCode < 98)  
+        || ( key.charCode > 99 && key.charCode < 118 ) || key.charCode > 118) return false;
+
+});
+
+
     
     
     
