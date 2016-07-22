@@ -1,8 +1,8 @@
           <tr>
               <td>{$ad->getId()}</td>
-              <td>{$ad->getTitle()}</td>
-              <td>{$ad->getDesc()}</td>
-              <td>{$ad->getPrice()}</td>
+              <td>{$ad->getTitle()|escape:'htmlall'}</td>
+              <td>{$ad->getDesc()|escape:'htmlall'}</td>
+              <td>{$ad->getPrice()|escape:'htmlall'}</td>
               <td>
               
               <a class="edit" data-toggle="tooltip" title="Редактировать объявление" 

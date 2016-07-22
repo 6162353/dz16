@@ -238,19 +238,9 @@ if ($_POST['form'] == "Сохранить_объявление") {
         
             // убирание тегов
 
-    foreach ( $_POST as $key => $value ) {
-
-        $arr[$key] = strip_tags($value);
-
-    }
-
-    $result['POST2'] = $arr;
+    $main->change_Ad($_POST);
     
-    
-    
-    $main->change_Ad($arr);
-    
-    $result['values']=$main->getValues_of_ad($arr['id']);
+    $result['values']=$main->getValues_of_ad($_POST['id']);
 
     //var_dump($_GET);
     echo json_encode($result);
@@ -314,24 +304,17 @@ if (isset($_GET["id"])) {
             
             // убирание тегов
 
-            foreach ( $_POST as $key => $value ) {
-                
-                $arr[$key] = strip_tags($value);
-                
-            }
+        
             
-            $result['POST2'] = $arr;
-            
-            
-            $ad = new BasicAd($arr);
+            $ad = new BasicAd($_POST);
 
 
                      
             $result['state'] = 'add ad';
             $result['id'] = $ad->save();
-            $result['title'] = $arr['title'];
-            $result['description'] = $arr['description'];
-            $result['price'] = $arr['price'];
+            $result['title'] = $_POST['title'];
+            $result['description'] = $_POST['description'];
+            $result['price'] = $_POST['price'];
             
             echo json_encode($result);
             //var_dump($ad);
